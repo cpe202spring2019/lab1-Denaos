@@ -37,7 +37,7 @@ class TestLab1(unittest.TestCase):
         self.assertAlmostEqual(loc12 == loc13, True)
         loc14 = Location("SLO", 35.3, -120.7)
         loc15 = Location("Poly Canyon Village", -500.007, 0.5)
-        self.assertAlmostEqual(loc14 == loc15, False
+        self.assertAlmostEqual(loc14 == loc15, False)
 
 if __name__ == "__main__":
         unittest.main()

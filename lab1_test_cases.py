@@ -1,7 +1,7 @@
 import unittest
 from lab1 import *
 
- # A few test cases.  Add more!!!
+
 class TestLab1(unittest.TestCase):
 
     def test_max_list_iter_error(self):
@@ -42,16 +42,52 @@ class TestLab1(unittest.TestCase):
         tlist = [25.25, 10.10, 35.35, 9.09]
         self.assertEqual(max_list_iter(tlist), 35.35)
 
-    def test_reverse_rec(self):
-        self.assertEqual(reverse_rec([1,2,3]),[3,2,1])
+    def test_reverse_rec_error(self):
+        """"Tests the reverse_rec function if the list is none"""
+        tlist = None
+        with self.assertRaises(ValueError):  # used to check for exception
+            reverse_rec(tlist)
 
-    def test_bin_search(self):
-        list_val =[0,1,2,3,4,7,8,9,10]
+    def test_reverse_rec_empty(self):
+        """"Tests the reverse_rec function if the list is empty"""
+        tlist = []
+        self.assertEqual(reverse_rec(tlist), [])
+
+    def test_reverse_rec_float(self):
+        """Tests the reverse_rec function with floating values"""
+        self.assertEqual(reverse_rec([1.01,5.05,9.09]),[9.09,5.05,1.01])
+
+    def test_reverse_rec_str(self):
+        """Tests the reverse_rec function with a string in the list"""
+        self.assertEqual(reverse_rec(["string",5,1]),[1,5,"string"])
+        self.assertEqual(reverse_rec([1,"string",5]),[5,"string",1])
+        self.assertEqual(reverse_rec([5,1,"string"]),["string",1,5])
+
+    def test_reverse_rec_order(self):
+        """Tests the reverse_rec function with an order"""
+        self.assertEqual(reverse_rec([1,2,3]),[3,2,1])
+        self.assertEqual(reverse_rec([3,1,2]),[2,1,3])
+        self.assertEqual(reverse_rec([2,3,1]),[1,3,2])
+
+    def test_bin_search_error(self):
+        """"Tests the bin_search function for a value error"""
+        list_val =None
+        with self.assertRaises(ValueError):  # used to check for exception
+            reverse_rec(list_val)
+
+    def test_bin_search_empty(self):
+        list_val=[]
+        self.assertEqual(bin_search(20,0,len(list_val)-1,list_val),None)
+
+    def test_bin_search_str(self):
+        list_val =["string",10,100,1000,2000,5000,10000,20000,50000]
         low = 0
         high = len(list_val)-1
-        self.assertEqual(bin_search(4, 0, len(list_val)-1, list_val), 4 )
+        self.assertEqual(bin_search("string",low,high,list_val),"string")
 
+    def test_bin_search_order(self):
+        """Tests the bin_search function with an order"""
 if __name__ == "__main__":
-        unittest.main()
+    unittest.main()
 
-    
+

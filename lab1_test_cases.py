@@ -76,17 +76,45 @@ class TestLab1(unittest.TestCase):
             reverse_rec(list_val)
 
     def test_bin_search_empty(self):
+        """"Tests the bin_search function with an empty list"""
         list_val=[]
-        self.assertEqual(bin_search(20,0,len(list_val)-1,list_val),None)
+        self.assertEqual(bin_search(20,0,0,list_val),None)
 
-    def test_bin_search_str(self):
-        list_val =["string",10,100,1000,2000,5000,10000,20000,50000]
+    def test_bin_search(self):
+        """"Tests the bin_search function with an integer list"""
+        list_val =[10,100,1000,2000,5000,10000,20000,50000]
         low = 0
         high = len(list_val)-1
-        self.assertEqual(bin_search("string",low,high,list_val),"string")
+        self.assertEqual(bin_search(100,low,high,list_val),1)
 
-    def test_bin_search_order(self):
-        """Tests the bin_search function with an order"""
+    def test_bin_search_str(self):
+        """"Tests the bin_search function with a string list"""
+        list_val=['a','b','c','d','e','ea','ee','ez','f']
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search('ez',low,high,list_val),7)
+
+    def test_bin_search_float(self):
+        """"Tests the bin_search function with a float list"""
+        list_val =[69.42,69.43,70.11,71.22,78.66,80.01,100.10]
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search(69.42,low,high,list_val),0)
+
+    def test_bin_search_below(self):
+        """"Tests the bin_search function with a target below the list"""
+        list_val = [1,2,3,4,5,6,7,8,9,10]
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search(-1,low,high,list_val),None)
+
+    def test_bin_search_above(self):
+        """"Tests the bin_search function with a target above the list"""
+        list_val = [1,2,3,4,5,6,7,8,9,10]
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search(1000,low,high,list_val),None)
+
 if __name__ == "__main__":
     unittest.main()
 

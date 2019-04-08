@@ -115,6 +115,16 @@ class TestLab1(unittest.TestCase):
         high = len(list_val)-1
         self.assertEqual(bin_search(1000,low,high,list_val),None)
 
+    def test_bin_search_two(self):
+        """"Tests the bin_search function with two numbers in the list"""
+        list_val = [5,10]
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search(5,low,high,list_val),0)
+        self.assertEqual(bin_search(10,low,high,list_val),1)
+        """"Tests the bin_search function with with a negative index value"""
+        self.assertEqual(bin_search(3, low, high, list_val), None)
+
 if __name__ == "__main__":
     unittest.main()
 

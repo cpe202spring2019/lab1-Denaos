@@ -83,7 +83,7 @@ class TestLab1(unittest.TestCase):
     def test_bin_search_empty(self):
         """"Tests the bin_search function with an empty list"""
         list_val=[]
-        self.assertEqual(bin_search(1,0,1,list_val),None)
+        self.assertEqual(bin_search(200,0,1,list_val),None)
 
     def test_bin_search(self):
         """"Tests the bin_search function with an integer list"""

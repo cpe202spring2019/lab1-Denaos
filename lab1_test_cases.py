@@ -53,6 +53,11 @@ class TestLab1(unittest.TestCase):
         tlist = []
         self.assertEqual(reverse_rec(tlist), [])
 
+    def test_reverse_rec_one(self):
+        """"Tests the reverse_rec function if the list is one value"""
+        tlist=[1]
+        self.assertEqual(reverse_rec(tlist),[1])
+
     def test_reverse_rec_float(self):
         """Tests the reverse_rec function with floating values"""
         self.assertEqual(reverse_rec([1.01,5.05,9.09]),[9.09,5.05,1.01])
@@ -73,12 +78,12 @@ class TestLab1(unittest.TestCase):
         """"Tests the bin_search function for a value error"""
         list_val =None
         with self.assertRaises(ValueError):  # used to check for exception
-            reverse_rec(list_val)
+            bin_search(20,0,0,list_val)
 
     def test_bin_search_empty(self):
         """"Tests the bin_search function with an empty list"""
         list_val=[]
-        self.assertEqual(bin_search(20,0,0,list_val),None)
+        self.assertEqual(bin_search(1,0,1,list_val),None)
 
     def test_bin_search(self):
         """"Tests the bin_search function with an integer list"""

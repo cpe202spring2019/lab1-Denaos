@@ -10,7 +10,7 @@ class Location:
         self.lon = lon      # longitude in degrees (-180 to 180)
 
     def __eq__(self, other):
-        return type(other) == Location and math.isclose(self.lat,other.lat) and math.isclose(self.lon,other.lon)
+        return type(other) is Location and self.name == other.name and math.isclose(self.lat, other.lat) and math.isclose(self.lon, other.lon)
 
     def __repr__(self):
         return "Location('%s', %g, %g)" % (self.name, self.lat, self.lon)
